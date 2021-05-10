@@ -34,6 +34,12 @@
             <th></th>
             <td><button type="submit">Add</button></td>
         </tr>
+        <td>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="imgToUpload">
+                <input type="submit" value="Upload image" name="submit">
+            </form>
+        </td>
     </table>
 </form>
 

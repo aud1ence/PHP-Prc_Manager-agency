@@ -1,11 +1,11 @@
 <?php
 //include "data.json";
-echo phpversion();
+//echo phpversion();
 include_once "EmployeeManager/EmployeeManager.php";
 include_once "Employee/Employee.php";
 $employeeManager = new EmployeeManager("data.json");
 $staffs = $employeeManager->getAll();
-var_dump($staffs);
+//var_dump($staffs);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,14 +14,17 @@ var_dump($staffs);
     <title>Manager Agency</title>
     <style>
         table {
-            width: 600px;
+            width: 800px;
+            height: 700px;
             border-collapse: collapse;
             border: 1px solid black;
         }
-        td,th {
+
+        td, th {
             text-align: center;
             border: 1px solid black;
         }
+
         h2 {
 
         }
@@ -37,22 +40,23 @@ var_dump($staffs);
         <th>Date</th>
         <th>Address</th>
         <th>Job Position</th>
-        <th></th>
-        <th></th>
+        <th>Avatar</th>
     </tr>
     <?php foreach ($staffs as $k => $staff): ?>
-    <tr>
-        <td><?=$k + 1?></td>
-        <td><?= $staff->getFirst() ?></td>
-        <td><?= $staff->getLast() ?></td>
-        <td><?= $staff->getDate() ?></td>
-        <td><?= $staff->getAddress() ?></td>
-        <td><?= $staff->getPosition() ?></td>
-        <td><a href="behavior/delete.php?index=<?php echo $k?>">Delete</a></td>
-        <td><a href="add.php">Add</a></td>
-    </tr>
-    <?php endforeach; ?>
+        <tr>
+            <td><?= $k + 1 ?></td>
+            <td><?= $staff->getFirst() ?></td>
+            <td><?= $staff->getLast() ?></td>
+            <td><?= $staff->getDate() ?></td>
+            <td><?= $staff->getAddress() ?></td>
+            <td><?= $staff->getPosition() ?></td>
+            <td><img src="img/images<?=$k + 1 ?>.jpeg" width="100"></td>
+            <td><a onclick="return confirm('Sure?')" href="behavior/delete.php?index=<?php echo $k ?>">Delete</a></td>
 
+        </tr>
+    <?php endforeach; ?>
+    <button><a href="add.php">Add</a></button>
 </table>
+
 </body>
 </html>
